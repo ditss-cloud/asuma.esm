@@ -103,20 +103,47 @@ export default {
 
 ## ⚙️ Konfigurasi
 
-Edit file `config.js` untuk mengatur:
-
-- **Owner**
-- **Nama bot**
-- **Prefix**
-- **API Keys**
-- **Pesan default**
-
-**Contoh:**
+Edit file `config.js` untuk mengatur data bot:
 
 ```js
-global.owner = ["6281513607731"]
-global.botName = "Asuma MD"
-global.prefix = "."
+global.owner = "6281513607731"
+// Info bot & owner
+global.info = {
+    owner: ['6281513607731'],
+    namabot: 'DitssBot',
+    nama_owner: 'ditss.'
+};
+// Limit & user type
+global.limit = {
+    free: 20,
+    premium: 999,
+    vip: 9999
+}
+global.user = {
+    owner: 'ⓞ',
+    admin: 'Ⓐ',
+    premium: 'Ⓟ',
+    limit: 'Ⓛ',
+    vip: 'Ⓥ',
+    member: 'Ⓜ',
+    guest: 'Ⓖ'
+}
+// Money & API
+global.money = {
+    free: 10000,
+    premium: 1000000,
+    vip: 10000000
+}
+global.api = {
+    ditss: "https://api-ditss.vercel.app",
+    example: "https://example.com/api"
+}
+// Response default
+global.ress = {
+    key: 'Apikey Anda telah habis',
+    owner: `${global.user?.owner || 'ⓞ'} Fitur Khusus Owner!`,
+    ...
+}
 ```
 
 ---
