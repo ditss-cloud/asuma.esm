@@ -1,39 +1,40 @@
 # 🤖 Asuma Base MD (ESM)
 
-Base WhatsApp Bot (Multi Device) dengan struktur **ECMAScript Modules (ESM)**.  
-Didesain ringan, bersih, dan fleksibel untuk developer yang mau bikin bot WhatsApp dari nol.  
+![Node.js](https://img.shields.io/badge/node-%3E=18.x-green)
+![License](https://img.shields.io/github/license/ditss-cloud/asuma.esm)
+![Made with Baileys](https://img.shields.io/badge/baileys-whatsapp%20api-blue)
 
-Mendukung **2 gaya development**:
-- ⚡ **Case Handler** → cocok buat yang suka pakai `switch-case`
-- 🧩 **Plugins System** → modular, gampang dikembangkan & dibagi
+Base WhatsApp Bot (Multi Device) dengan struktur **ECMAScript Modules (ESM)**.  
+Didesain ringan, bersih, dan fleksibel untuk developer yang ingin bikin bot WhatsApp dari nol.
 
 ---
 
 ## ✨ Fitur Utama
 - 🔹 Multi Device support (Baileys)
 - 🔹 Struktur modern ESM
-- 🔹 Case handler
-- 🔹 Plugins handler
-- 🔹 Mudah dikembangkan (AI, game, store, dll)
+- 🔹 Dua gaya development: **Case Handler** & **Plugins System**
+- 🔹 Mudah dikembangkan (AI, game, toko, dsb)
+- 🔹 Tidak ada fitur bawaan, 100% base untuk belajar & eksperimen
 
 ---
 
 ## 📂 Struktur Project
+
 ```bash
 asuma-esm/
-│── index.js            # Entry point
-│── WhatsApp.js         # Handler utama (case & plugins)
-│── config.js           # Konfigurasi global
+│── index.js             # Entry point
+│── WhatsApp.js          # Handler utama (case & plugins)
+│── config.js            # Konfigurasi global
 │── package.json
 │── README.md
 │
-├── database/           # Penyimpanan data
+├── database/            # Penyimpanan data
 │   ├── baileys_store.json
 │   ├── database.json
 │   ├── error.json
 │   └── sampah/
 │
-├── lib/                # Library & helper
+├── lib/                 # Library & helper
 │   ├── sticker.js
 │   ├── fetchBuffer.js
 │   ├── myfunction.js
@@ -41,77 +42,120 @@ asuma-esm/
 │   ├── func/
 │   └── utils/
 │
-├── plugins/            # Plugins command
+├── plugins/             # Plugins command
 │   └── example.js
 │
-└── source/             # Backend tambahan
+└── source/              # Backend tambahan
     ├── dashboard.js
     ├── database.js
     ├── loadDatabase.js
     └── server.js
 ```
-🚀 Instalasi
 
-# Clone repo
-git clone https://github.com/ditss-cloud/asuma.esm
-cd asuma-base-md
+---
 
-# Install dependencies
-npm install
+## 🚀 Instalasi
 
-# Start bot
-node index.js
+1. **Clone repo**
+    ```bash
+    git clone https://github.com/ditss-cloud/asuma.esm
+    cd asuma-esm
+    ```
 
+2. **Install dependencies**
+    ```bash
+    npm install
+    ```
 
-#⚡ Contoh Command
+3. **Start bot**
+    ```bash
+    node index.js
+    ```
 
-Case Handler (WhatsApp.js)
+> **Catatan:**  
+> Pastikan Node.js versi **18.x** atau lebih baru.
 
+---
+
+## ⚡ Contoh Command
+
+### Case Handler (`WhatsApp.js`)
+
+```js
 case 'ping': {
    m.reply("Pong 🏓")
 }
 break
+```
 
-Plugins (plugins/example.js)
+### Plugins System (`plugins/example.js`)
 
+```js
 export default {
   command: ['menu', 'help'],
   handler: async (m, { conn }) => {
     await m.reply("Ini contoh plugin menu ✨")
   }
 }
-
+```
 
 ---
 
-⚙️ Konfigurasi
+## ⚙️ Konfigurasi
 
-Edit file config.js untuk mengatur:
+Edit file `config.js` untuk mengatur:
 
-Owner
+- **Owner**
+- **Nama bot**
+- **Prefix**
+- **API Keys**
+- **Pesan default**
 
-Nama bot
+**Contoh:**
 
-Prefix
-
-API Keys
-
-Pesan default
-
-
-Contoh:
-
+```js
 global.owner = ["6281513607731"]
 global.botName = "Asuma MD"
 global.prefix = "."
-
+```
 
 ---
 
-📌 Catatan
+## 📚 Referensi & Dokumentasi
 
-Repo ini hanya base → tidak ada fitur bawaan.
+- [Baileys WhatsApp API](https://github.com/WhiskeySockets/Baileys)
+- [ECMAScript Modules (ESM)](https://nodejs.org/docs/latest-v18.x/api/esm.html)
 
-Cocok untuk developer yang mau belajar & kembangkan bot sendiri.
+---
 
-Dibangun dengan Baileys.
+## 💡 FAQ
+
+**Q:** Kok botnya nggak jalan?  
+**A:** Cek versi Node.js kamu, pastikan minimal 18.x. Lihat error di terminal, biasanya masalah dependency atau permission.
+
+**Q:** Gimana cara bikin plugin sendiri?  
+**A:** Lihat contoh di `plugins/example.js`, lalu buat file baru di folder `plugins/`.
+
+**Q:** Bisa deploy di VPS?  
+**A:** Sangat bisa! Pastikan sudah install Node.js dan npm di VPS kamu.
+
+---
+
+## 🤝 Kontribusi
+
+- Pull request & issue sangat welcome!
+- Ikuti struktur dan gaya penulisan yang sudah ada.
+- Diskusi dan feedback silakan lewat [issue tracker](https://github.com/ditss-cloud/asuma.esm/issues).
+
+---
+
+## 📌 Catatan
+
+Repo ini hanya base → **tidak ada fitur bawaan**.  
+Cocok untuk developer yang mau belajar & kembangkan bot WhatsApp sendiri.  
+Dibangun dengan Baileys.  
+Lisensi: MIT
+
+---
+
+**Copyright © ditss-cloud**
