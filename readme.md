@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ditss-cloud/asuma.esm/main/assets/logo.png" alt="DitssBot Logo" width="180"/><br/>
+  <img src="https://api-ditss.vercel.app/icon.png" alt="DitssBot Logo" width="180"/><br/>
   <b>Asuma Base MD (ESM)</b><br/>
   <i>Lightweight WhatsApp Multi-Device Bot Base</i>
 </p>
