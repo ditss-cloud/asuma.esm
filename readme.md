@@ -49,3 +49,71 @@ asuma-esm/
     ├── database.js
     ├── loadDatabase.js
     └── server.js
+
+🚀 Instalasi
+
+# Clone repo
+git clone https://github.com/username/asuma-base-md
+cd asuma-base-md
+
+# Install dependencies
+npm install
+
+# Start bot
+node index.js
+
+
+---
+
+⚡ Contoh Command
+
+Case Handler (WhatsApp.js)
+
+case 'ping': {
+   m.reply("Pong 🏓")
+}
+break
+
+Plugins (plugins/example.js)
+
+export default {
+  command: ['menu', 'help'],
+  handler: async (m, { conn }) => {
+    await m.reply("Ini contoh plugin menu ✨")
+  }
+}
+
+
+---
+
+⚙️ Konfigurasi
+
+Edit file config.js untuk mengatur:
+
+Owner
+
+Nama bot
+
+Prefix
+
+API Keys
+
+Pesan default
+
+
+Contoh:
+
+global.owner = ["6281513607731"]
+global.botName = "Asuma MD"
+global.prefix = "."
+
+
+---
+
+📌 Catatan
+
+Repo ini hanya base → tidak ada fitur bawaan.
+
+Cocok untuk developer yang mau belajar & kembangkan bot sendiri.
+
+Dibangun dengan Baileys.
