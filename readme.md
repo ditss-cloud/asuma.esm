@@ -53,7 +53,7 @@ asuma-esm/
 🚀 Instalasi
 
 # Clone repo
-git clone https://github.com/username/asuma-base-md
+git clone https://github.com/ditss-cloud/asuma.esm
 cd asuma-base-md
 
 # Install dependencies
@@ -63,9 +63,7 @@ npm install
 node index.js
 
 
----
-
-⚡ Contoh Command
+#⚡ Contoh Command
 
 Case Handler (WhatsApp.js)
 
