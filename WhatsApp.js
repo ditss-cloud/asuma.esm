@@ -49,7 +49,7 @@ const pkg = JSON.parse(await fsPromises.readFile(packageJsonPath, 'utf8'));
  *  GitHub         : https://github.com/ditss-dev
  *  WhatsApp       : https://wa.me/6281513607731
  *  Channel        : https://whatsapp.com/channel/0029VaimJO0E50UaXv9Z1J0L
- *  File           : A
+ *  File           : WhatsApp.js
  *  Description    : Source code project Asuma - WhatsApp Bot
  *  Created Year   : 2025
  * -----------------------------------------------------------------------------
