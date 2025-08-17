@@ -7,6 +7,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 global.owner = "6281513607731"
 // Definisi global info
+
 global.info = {
     owner: ['6281513607731'],
     namabot: 'DitssBot',
