@@ -731,7 +731,7 @@ if (budy.startsWith('>')) {
 
 if (budy.startsWith('=>')) {
     if (!isOwner) return;
-    
+     
     async function Return(sul) {
         let sat = JSON.stringify(sul, null, 2);
         let bang = util.format(sat);
