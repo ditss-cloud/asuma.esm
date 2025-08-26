@@ -39,8 +39,6 @@ const errorCache = {};
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const errorFilePath = join(__dirname, 'database', 'error.json');
-
-// Ambil package.json
 const packageJsonPath = join(__dirname, 'package.json');
 const pkg = JSON.parse(await fsPromises.readFile(packageJsonPath, 'utf8'));
 /*
@@ -64,72 +62,45 @@ let body = "";
 
 try {
     body =
-        // Versi baru Baileys, button/list interaktif
         (m.mtype === 'interactiveResponseMessage'
             ? JSON.parse(m.message.interactiveResponseMessage.nativeFlowResponseMessage?.paramsJson || "{}")?.id
             : "") ||
-
-        // Chat biasa
         m.message?.conversation ||
-
-        // Caption media
         m.message?.imageMessage?.caption ||
         m.message?.videoMessage?.caption ||
-
-        // Extended text
         m.message?.extendedTextMessage?.text ||
-
-        // Tombol versi lama
         m.message?.buttonsResponseMessage?.selectedButtonId ||
         m.message?.listResponseMessage?.singleSelectReply?.selectedRowId ||
         m.message?.templateButtonReplyMessage?.selectedId ||
-
-        // Context info tombol/list
         m.message?.messageContextInfo?.buttonsResponseMessage?.selectedButtonId ||
         m.message?.messageContextInfo?.listResponseMessage?.singleSelectReply?.selectedRowId ||
-
-        // Fallback terakhir (kalau semua kosong)
         m.text ||
         "";
 } catch {
-    // Kalau parsing gagal
-    body = m.text || "";
+	body = m.text || "";
 }
 
 body = body.trim();
         const budy = (typeof m.text == 'string' ? m.text : '')
-m.device = /^3A/.test(m.id) ? 'ios' : m.id.startsWith('3EB') ? 'web' : /^.{21}/.test(m.id) ? 'android' : /^.{18}/.test(m.id) ? 'desktop' : 'unknown';
-  // Ambil admin grup
-const getGroupAdmins = (participants) => {
+		m.device = /^3A/.test(m.id) ? 'ios' : m.id.startsWith('3EB') ? 'web' : /^.{21}/.test(m.id) ? 'android' : /^.{18}/.test(m.id) ? 'desktop' : 'unknown';
+		const getGroupAdmins = (participants) => {
     return participants
         .filter(u => u.admin === 'admin' || u.admin === 'superadmin')
         .map(u => u.jid);
-};
-
-// Normalisasi JID
-const normalize = jid => jid.split(':')[0] + '@s.whatsapp.net';
-
-// Nomor bot
-const botNumber = Ditss.decodeJid(Ditss.user.id);
-
-// Metadata & peserta grup
-const groupMetadata = m.isGroup ? await Ditss.groupMetadata(m.chat).catch(() => ({})) : null;
-const groupMembers = m.isGroup ? groupMetadata.participants || [] : [];
-const groupAdmins = m.isGroup ? getGroupAdmins(groupMembers) : [];
-
-// Cek status
+		};
+		const normalize = jid => jid.split(':')[0] + '@s.whatsapp.net';
+		const botNumber = Ditss.decodeJid(Ditss.user.id);
+		const groupMetadata = m.isGroup ? await Ditss.groupMetadata(m.chat).catch(() => ({})) : null;
+		const groupMembers = m.isGroup ? groupMetadata.participants || [] : [];
+		const groupAdmins = m.isGroup ? getGroupAdmins(groupMembers) : [];
         const isBotAdmins = m.isGroup ? groupAdmins.map(normalize).includes(normalize(botNumber)) : false;
         const isAdmins = m.isGroup ? groupAdmins.map(normalize).includes(normalize(m.sender)) : false;
-        // isAdmin
         m.isAdmins = isAdmins
         m.isAdmin = isAdmins
         let isAdmin = isAdmins
-        // bot admin
         m.isBotAdmin = isBotAdmins
         m.isBotAdmins = isBotAdmins
         let isBotAdmin = isBotAdmins
-        
-        // db
         const userdb = global.db.users[m.sender]
         const set = db.set[botNumber]
         const premium = db.premium
@@ -156,37 +127,27 @@ const groupAdmins = m.isGroup ? getGroupAdmins(groupMembers) : [];
 		const isLimit = db.users[m.sender] ? (db.users[m.sender].limit > 0) : false
 		const isPremium = isCreator || checkStatus(m.sender, premium) || false
 		const isNsfw = m.isGroup ? db.groups[m.chat].nsfw : false
-        
-        // func ppuser 
-let ppuser, ppgroup, ppnyauser, ppnyaGrup;
-// ppuser
+        let ppuser, ppgroup, ppnyauser, ppnyaGrup;
 try {
     ppuser = await Ditss.profilePictureUrl(m.sender, 'image');
 } catch (err) {
     ppuser = `${api.ditss}/img/ppuserr.jpg`;
 }
-
-// ppgroup
 try {
     ppgroup = await Ditss.profilePictureUrl(m.chat, 'image');
 } catch (err) {
     ppgroup = `${api.ditss}/img/ppuserr.jpg`;
 }
-
-// buffer ppuser
 try {
     ppnyauser = await getBuffer(ppuser);
 } catch (e) {
     ppnyauser = await getBuffer(`${api.ditss}/img/ppuserr.jpg`);
 }
-
-// buffer ppgroup
 try {
     ppnyaGrup = await getBuffer(ppgroup);
 } catch (e) {
     ppnyaGrup = await getBuffer(`${api.ditss}/img/ppuserr.jpg`);
 }
-                //function 
         const reply = (anu) => {
     const mentionJid = [m.sender]; 
     const { message, key } = generateWAMessageFromContent(m.chat, {
